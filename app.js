@@ -5,6 +5,7 @@
 const express = require('express');
 const aws = require('aws-sdk');
 const axios = require('axios');
+const path = require('path');
 const bodyParser = require('body-parser');
 require('./db/mongoose');
 const { Event } = require('./db/models/event');
@@ -14,6 +15,9 @@ const app = express();
 const port = process.env.PORT || 7331;
 
 app.use(bodyParser.json());
+
+aws.config.loadFromPath(path.join(__dirname, 'config.json'));
+const sqs = new aws.SQS();
 
 app.get('/', (req, res) => {
   res.send('hi');
