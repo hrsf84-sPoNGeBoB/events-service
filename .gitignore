@@ -36,4 +36,4 @@ dist/
 node_modules/
 bower_components/
 
-aws-credentials.json
+config.json
